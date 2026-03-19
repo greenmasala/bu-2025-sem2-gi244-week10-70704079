@@ -1,0 +1,48 @@
+# Unity generated folders
+Library/
+Temp/
+Logs/
+UserSettings/
+MemoryCaptures/
+
+# Build output
+Build/
+Builds/
+*.apk
+*.aab
+*.unitypackage
+
+# Generated solution/project files
+*.csproj
+*.sln
+*.slnx
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.opendb
+*.VC.db
+*.pdb
+*.mdb
+
+# IDE folders
+.vs/
+.idea/
+.vscode/
+
+# Unity cache and generated metadata
+obj/
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Gradle / Android generated output
+.gradle/
+
