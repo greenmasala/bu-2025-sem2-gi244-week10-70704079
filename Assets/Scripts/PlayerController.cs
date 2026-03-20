@@ -13,12 +13,16 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody rb;
     private InputAction jumpAction;
+    private InputAction dash;
     private bool isOnGround = true;
+    public bool IsDashing;
+    private int hp = 3;
 
     private Animator playerAnim;
     private AudioSource playerAudio;
 
     public bool gameOver = false;
+    private int jumpCount;
 
     void Awake()
     {
@@ -33,6 +37,7 @@ public class PlayerController : MonoBehaviour
         Physics.gravity *= gravityModifier;
 
         jumpAction = InputSystem.actions.FindAction("Jump");
+        dash = InputSystem.actions.FindAction("Sprint");
 
         gameOver = false;
     }
@@ -40,13 +45,27 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (jumpCount >= 2)
+        {
+            isOnGround = false;
+        }
+
         if (jumpAction.triggered && isOnGround && !gameOver)
         {
             rb.AddForce(jumpForce * Vector3.up, ForceMode.Impulse);
-            isOnGround = false;
             playerAnim.SetTrigger("Jump_trig");
             dirtParticle.Stop();
             playerAudio.PlayOneShot(jumpSfx);
+            jumpCount++;
+        }
+
+        if (dash.IsPressed())
+        {
+            IsDashing = true;
+        }
+        else
+        {
+            IsDashing = false;
         }
     }
 
@@ -55,15 +74,24 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             isOnGround = true;
+            jumpCount = 0;
             dirtParticle.Play();
         }
         else if (collision.gameObject.CompareTag("Obstacle"))
         {
-            Debug.Log("Game Over!");
+            hp--;
+            Debug.Log("hit! hp remaining: " +hp);
+            Instantiate(explosionParticle, transform.position, Quaternion.identity);
+            playerAudio.PlayOneShot(crashSfx);
+            Destroy(collision.gameObject);
+        }
+
+        if (hp <= 0)
+        {
             gameOver = true;
             playerAnim.SetBool("Death_b", true);
             playerAnim.SetInteger("DeathType_int", 1);
-            explosionParticle.Play();
+            Instantiate(explosionParticle, transform.position, Quaternion.identity);
             dirtParticle.Stop();
             playerAudio.PlayOneShot(crashSfx);
         }

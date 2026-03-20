@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5256051093047304093}
   - component: {fileID: 8522576366028466313}
   m_Layer: 0
-  m_Name: Barrel
+  m_Name: Barrier
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,7 +43,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5842114324701935107}
-  m_Mesh: {fileID: 4300000, guid: 0934a3eb8623484489b357f278941c88, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 5bb9a811cdd73fa42975794b4c22350f, type: 3}
 --- !u!23 &433685670295184222
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -139,8 +139,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.94652724, y: 1.3434764, z: 0.9465271}
-  m_Center: {x: -0.000000044703484, y: 0.6717382, z: 0}
+  m_Size: {x: 0.94652724, y: 1.7519664, z: 0.9465271}
+  m_Center: {x: -0.000000059604645, y: 0.8759832, z: 0}
 --- !u!114 &8522576366028466313
 MonoBehaviour:
   m_ObjectHideFlags: 0
