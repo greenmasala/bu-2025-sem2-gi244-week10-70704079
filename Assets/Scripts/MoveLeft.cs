@@ -10,7 +10,7 @@ public class MoveLeft : MonoBehaviour
 
     private PlayerController playerController;
 
-    void Start()
+    void Start() //exam 3 - dash
     {
         normalSpeed = speed;
         dashSpeed = speed * 2;
@@ -20,7 +20,7 @@ public class MoveLeft : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (playerController.IsDashing)
+        if (playerController.IsDashing) //exam 3 - dash
         {
             speed = dashSpeed;
         }

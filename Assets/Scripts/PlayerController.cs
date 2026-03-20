@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (jumpCount >= 2)
+        if (jumpCount >= 2) //exam 2 - double jump
         {
             isOnGround = false;
         }
@@ -59,7 +59,7 @@ public class PlayerController : MonoBehaviour
             jumpCount++;
         }
 
-        if (dash.IsPressed())
+        if (dash.IsPressed()) //exam 3 - dash
         {
             IsDashing = true;
         }
@@ -77,7 +77,7 @@ public class PlayerController : MonoBehaviour
             jumpCount = 0;
             dirtParticle.Play();
         }
-        else if (collision.gameObject.CompareTag("Obstacle"))
+        else if (collision.gameObject.CompareTag("Obstacle")) //exam 4 - hp
         {
             hp--;
             Debug.Log("hit! hp remaining: " +hp);
