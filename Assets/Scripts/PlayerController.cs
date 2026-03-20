@@ -81,9 +81,10 @@ public class PlayerController : MonoBehaviour
         {
             hp--;
             Debug.Log("hit! hp remaining: " +hp);
-            Instantiate(explosionParticle, transform.position, Quaternion.identity);
+            var explosionPrefab = Instantiate(explosionParticle, transform.position, Quaternion.identity);
             playerAudio.PlayOneShot(crashSfx);
             Destroy(collision.gameObject);
+            Destroy(explosionPrefab.gameObject, 3f);
         }
 
         if (hp <= 0)
@@ -91,9 +92,10 @@ public class PlayerController : MonoBehaviour
             gameOver = true;
             playerAnim.SetBool("Death_b", true);
             playerAnim.SetInteger("DeathType_int", 1);
-            Instantiate(explosionParticle, transform.position, Quaternion.identity);
+            var explosionPrefab = Instantiate(explosionParticle, transform.position, Quaternion.identity);
             dirtParticle.Stop();
             playerAudio.PlayOneShot(crashSfx);
+            Destroy(explosionPrefab.gameObject, 3f);
         }
     }
 
